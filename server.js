@@ -12,13 +12,23 @@ app.use(express.urlencoded({extended:true}))
 app.use(cors())
 
 app.get('/',async (req,res) =>{
-   const users=  await USER.find()
-   res.status(200).json({data:users})
+    try {
+       const users=  await USER.find()
+       res.status(200).json({data:users})
+    
+   } catch (error) {
+    res.status(500).json({data:error})
+   }
 })
 
 app.post('/',async(req,res)=>{
-    const creatUser = await USER.create(req.body)
+    try {
+        const creatUser = await USER.create(req.body)
     console.log(creatUser)
+    res.status(200).json({data:creatUser})
+    } catch (error) {
+        res.status(500).json({data:error})
+    }
 })
 
 

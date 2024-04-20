@@ -16,10 +16,10 @@ app.get('/',async (req,res) =>{
    res.status(200).json({data:users})
 })
 
-// app.post('/',async(req,res)=>{
-//     const creatUser = await USER.create(req.body)
-//     console.log(creatUser)
-// })
+app.post('/',async(req,res)=>{
+    const creatUser = await USER.create(req.body)
+    console.log(creatUser)
+})
 
 
 initMongo()
